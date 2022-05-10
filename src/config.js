@@ -11,14 +11,10 @@ export const config = {
   publicSale: `${MAIN_URL}products/public?type_name=Sale`,
   privateNew: `${MAIN_URL}products/private?type_name=New`,
   publicNew: `${MAIN_URL}products/public?type_name=New`,
+  detail: `${MAIN_URL}products`,
+  review: `${MAIN_URL}users/review`,
 };
+
 export const REDIRECT_URI = "http://localhost:3000/kakaoauth";
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 export const API_URL = "http://10.58.6.184:8000/users/kakao";
-
-export const DETAIL_URL = "http://10.58.6.184:8000/";
-export const DETAIL_API = {
-  detail: `${DETAIL_URL}products/1/1`,
-  review: `${DETAIL_URL}users/review`,
-  like: `${DETAIL_URL}users/like`,
-};

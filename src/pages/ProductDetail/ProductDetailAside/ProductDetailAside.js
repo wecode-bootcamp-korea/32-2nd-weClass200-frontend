@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { SIDEBAR_BUTTON } from "../ProductDetailData";
 import { Dialog, DialogTitle, DialogContentText } from "@mui/material";
 import Button from "@mui/material/Button";
-import { DETAIL_API } from "../../../config";
+import { config } from "../../../config";
 
 const ProductDetailAside = ({ detail }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -30,7 +30,7 @@ const ProductDetailAside = ({ detail }) => {
 
   useEffect(() => {
     setLikeAmount(isLiked ? likeAmount + 1 : likeAmount - 1);
-    fetch(`${DETAIL_API.like}`, {
+    fetch(`${config.like}`, {
       method: "POST",
       body: JSON.stringify({
         user_id: "9",

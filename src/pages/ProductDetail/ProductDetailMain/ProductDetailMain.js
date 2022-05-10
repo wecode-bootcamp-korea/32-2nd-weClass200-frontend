@@ -5,9 +5,9 @@ import styled from "styled-components";
 import { Dialog, DialogTitle } from "@mui/material";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
-import { DETAIL_API } from "../../../config";
+import { config } from "../../../config";
 
-const ProductDetailMain = ({ detail, setDetail }) => {
+const ProductDetailMain = ({ detail, getData }) => {
   const [ratingValue, setRatingValue] = useState(0);
   const [reviewValue, setReviewValue] = useState("");
   const [fileImg, setFileImg] = useState("");
@@ -48,16 +48,6 @@ const ProductDetailMain = ({ detail, setDetail }) => {
     setOpenModal(true);
   };
 
-  const handleDeleteClick = () => {
-    fetch(`${DETAIL_API.review}`, {
-      method: "DELETE",
-      body: JSON.stringify({
-        user_id: "9",
-        product_id: "1",
-      }),
-    });
-  };
-
   const handleRatingInput = e => {
     setRatingValue(e.target.value);
   };
@@ -67,25 +57,42 @@ const ProductDetailMain = ({ detail, setDetail }) => {
   };
 
   const handleReviewPost = () => {
-    setIsPosted(!isPosted);
-    setOpenModal(false);
-    setReviewValue("");
-    setRatingValue(0);
-
-    fetch(`${DETAIL_API.review}`, {
+    fetch(`${config.review}`, {
       method: "POST",
       body: JSON.stringify({
-        user_id: "4",
+        user_id: "3",
         product_id: "1",
         content: reviewValue,
         rating: Number(ratingValue),
         image_url: fileImg,
       }),
+    }).then(res => {
+      if (res.status !== 201) {
+        alert("후기 등록에 실패했습니다. 다시 시도해주세요");
+        return;
+      }
+
+      setIsPosted(!isPosted);
+      setOpenModal(false);
+      setReviewValue("");
+      setRatingValue(0);
+      setIsClickedMore(true);
+      getData();
     });
   };
 
   const handleImgInput = e => {
     setFileImg(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleDeleteClick = () => {
+    fetch(`${config.review}`, {
+      method: "DELETE",
+      body: JSON.stringify({
+        user_id: "3",
+        product_id: "1",
+      }),
+    }).then(res => getData());
   };
 
   useEffect(() => {
@@ -100,7 +107,9 @@ const ProductDetailMain = ({ detail, setDetail }) => {
     <LeftSide>
       <ThumbBox>
         <ThumbImg src={detail[0]?.thumb_img} />
-        <ThumbCoupon>{String(coupon)[0]}만원 쿠폰</ThumbCoupon>
+        <ThumbCoupon visibility={coupon ? "visible" : "hidden"}>
+          {String(coupon)[0]}만원 쿠폰
+        </ThumbCoupon>
       </ThumbBox>
       <TabMenus>
         {TAB_MENU.map(menu => {
@@ -172,24 +181,33 @@ const ProductDetailMain = ({ detail, setDetail }) => {
             })}
           </ReviewImgBox>
           <Dialog open={openModal}>
-            <DialogTitle>후기 작성</DialogTitle>
-            <Rating onChange={handleRatingInput} value={ratingValue} />
-            <ReviewInput
-              onChange={handleReviewInput}
-              value={reviewValue}
-              placeholder="예쁜 리뷰 부타캐용"
+            <DialogTitle fontWeight={700} color="white" backgroundColor="black">
+              후기 작성
+            </DialogTitle>
+            <Rating
+              style={{ margin: "19px 0 0 12px" }}
+              onChange={handleRatingInput}
+              value={ratingValue}
             />
-            <ImgPreview
-              src={fileImg ? fileImg : "./images/imgPreview.svg"}
-              alt="img"
-            />
-
-            <ReviewImgInput
-              id="image"
-              onChange={handleImgInput}
-              type="file"
-              accept="image/*"
-            />
+            <DialogWrap>
+              <ReviewInput
+                onChange={handleReviewInput}
+                value={reviewValue}
+                placeholder="최소 15자 이상 작성해주세요."
+              />
+              <ImgPreview
+                display={fileImg ? "block" : "none"}
+                color="gray"
+                src={fileImg ? fileImg : null}
+                alt="img"
+              />
+              <ReviewImgInput
+                id="image"
+                onChange={handleImgInput}
+                type="file"
+                accept="image/*"
+              />
+            </DialogWrap>
 
             <Button onClick={handleReviewPost}>리뷰 등록</Button>
             <Button
@@ -220,7 +238,7 @@ const ProductDetailMain = ({ detail, setDetail }) => {
                   </ReviewInfoBox>
                   <ReviewContent>{review.content}</ReviewContent>
                   <ReviewDeleteBtn id={review.id} onClick={handleDeleteClick}>
-                    X
+                    삭제
                   </ReviewDeleteBtn>
                 </Review>
               );
@@ -293,10 +311,11 @@ const ThumbCoupon = styled.p`
   color: white;
   background-color: #581fcf;
   border-radius: 2px;
+  visibility: ${props => props.visibility}
   font-size: 18px;
   font-weight: 800;
   text-align: center;
-`;
+  `;
 
 const TabMenus = styled.div`
   position: sticky;
@@ -408,21 +427,33 @@ const ReviewImg = styled.img`
   cursor: pointer;
 `;
 
+const DialogWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const ReviewInput = styled.textarea`
   width: 500px;
-  height: 500px;
+  height: 200px;
+  margin-top: 20px;
+  padding-left: 12px;
   resize: none;
   outline: none;
+  border: 1px solid lightgray;
 `;
 
 const ReviewImgInput = styled.input`
   width: 300px;
-  height: 300px;
+  margin-top: 4px;
 `;
 
 const ImgPreview = styled.img`
-  width: 300px;
+  display: ${props => props.display};
+  margin-top: 12px;
+  width: 400px;
   height: 300px;
+  border: 1px solid lightgray;
 `;
 
 const ReviewBox = styled.div`
@@ -496,8 +527,14 @@ const ReviewMoreBtn = styled.button`
   border: 0;
   color: black;
   background-color: #efefef;
+  opacity: 70%;
   font-weight: 700;
   font-size: 14px;
+
+  &:hover {
+    opacity: 100%;
+    transition: opacity 100ms ease-in;
+  }
 `;
 
 const ReviewWriteBtn = styled(ReviewMoreBtn)`
@@ -513,10 +550,20 @@ const ReviewWriteBtn = styled(ReviewMoreBtn)`
 `;
 
 const ReviewDeleteBtn = styled.button`
-  width: 30px;
-  height: 30px;
-  background-color: red;
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  margin: 20% 0 0 85%;
+  padding: 4px;
+  border: 1px solid lightgray;
+  opacity: 20%;
+  font-weight: 700;
+
+  &:hover {
+    opacity: 80%;
+    transition: opacity 100ms ease-in;
+  }
 `;
 
 const RefundBox = styled.div`

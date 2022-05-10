@@ -79,6 +79,7 @@ const FooterLayout = styled.div`
   align-items: center;
   bottom: 0;
   width: 100%;
+  margin-top: 100px;
 `;
 
 const Wrapper = styled.div`

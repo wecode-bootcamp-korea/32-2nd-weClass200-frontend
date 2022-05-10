@@ -4,4 +4,5 @@ export const config = {
   nav: `${MAIN_URL}products/nav`,
   list: `${MAIN_URL}products`,
   main: `${MAIN_URL}products/main`,
+  like: `${MAIN_URL}users/like`,
 };

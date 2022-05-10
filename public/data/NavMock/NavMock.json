@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "category": "투자",
+    "mainLink": "/",
+    "subCategory": [
+      { "id": 1, "subTitle": "주식", "subLink": "/products/" },
+      { "id": 2, "subTitle": "부동산", "subLink": "/products/" },
+      { "id": 3, "subTitle": "경제", "subLink": "/products/" }
+    ]
+  },
+
+  {
+    "id": 2,
+    "category": "Life",
+    "mainLink": "/",
+    "subCategory": [
+      { "id": 4, "subTitle": "운동", "subLink": "/products/" },
+      { "id": 5, "subTitle": "취미", "subLink": "/products/" }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "프로그래밍",
+    "mainLink": "/",
+    "subCategory": [
+      { "id": 6, "subTitle": "리액트", "subLink": "/products/" },
+      { "id": 7, "subTitle": "파이썬", "subLink": "/products/" },
+      { "id": 8, "subTitle": "장고", "subLink": "/products/" }
+    ]
+  },
+  {
+    "id": 4,
+    "category": "음식",
+    "mainLink": "/",
+    "subCategory": [
+      { "id": 9, "subTitle": "자취용", "subLink": "/products/" },
+      { "id": 10, "subTitle": "손님용", "subLink": "/products/" }
+    ]
+  },
+  {
+    "id": 5,
+    "category": "지식",
+    "mainLink": "/",
+    "subCategory": [
+      { "id": 11, "subTitle": "회사꿀팁", "subLink": "/products/" },
+      { "id": 12, "subTitle": "악기", "subLink": "/products/" }
+    ]
+  }
+]

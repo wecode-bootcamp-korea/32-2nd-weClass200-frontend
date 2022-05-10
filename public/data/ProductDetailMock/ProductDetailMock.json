@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "content_name": "[🔥요즘 트렌드] 최신 개정판! 스마트스토어로 월 100만원 만들기, 평범한 사람이 돈을 만드는 비법",
+    "creator_name": "신사임당",
+    "thumb_img": "https://unsplash.com/photos/xkBaqlcqeb4",
+    "upload_date": 220510,
+    "price": 199000,
+    "discount_rate": 35,
+    "discount_coupon": 30000,
+    "month": 5,
+    "like_amount": 8232,
+    "is_liked": false,
+    "is_learning": false,
+    "status": "today",
+    "reviews": [
+      {
+        "id": 0,
+        "user_name": "리코더",
+        "content": "강의가 정말 좋네요",
+        "rating": 5,
+        "review_img": "../images/thumbImg.png",
+        "post_date": 220510
+      },
+      {
+        "id": 1,
+        "user_name": "양코더",
+        "content": "재밌다",
+        "rating": 5,
+        "review_img": "../images/thumbImg.png",
+        "post_date": 220810
+      },
+      {
+        "id": 2,
+        "user_name": "송코더",
+        "content": "하하하하하",
+        "rating": 5,
+        "review_img": "../images/thumbImg.png",
+        "post_date": 220510
+      },
+      {
+        "id": 3,
+        "user_name": "안코더",
+        "content": "내가 더 잘해~",
+        "rating": 5,
+        "review_img": "../images/thumbImg.png",
+        "post_date": 220510
+      },
+      {
+        "id": 4,
+        "user_name": "황코더",
+        "content": "짱짱먠 >ㅁ<",
+        "rating": 5,
+        "review_img": "../images/thumbImg.png",
+        "post_date": 220510
+      }
+    ]
+  }
+]

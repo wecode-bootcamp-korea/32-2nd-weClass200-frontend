@@ -72,7 +72,7 @@ function Footer() {
 export default Footer;
 
 const FooterLayout = styled.div`
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -173,9 +173,9 @@ const FooterClause = styled.div`
   font-size: 8px;
   color: gray;
   padding-bottom: 10px;
-  &: first-child {
+  /* &: first-child {
     line-height: 16px;
-  }
+  } */
 `;
 
 const FooterAddress = styled.div`

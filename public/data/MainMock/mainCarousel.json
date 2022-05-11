@@ -1,0 +1,37 @@
+{
+  "result": [
+    {
+      "eventId": 1,
+      "mainCategoryIdLink": 1,
+      "status": "NEw",
+      "title": "0원에 배우는 개발자의 대화방법",
+      "subTitle": "현업에서 가장 인기있는 강의를 만나보세요",
+      "url": "/images/mainSliderMock/mainSlider2.png",
+      "backColor": "#f3223b"
+    },
+    {
+      "eventId": 3,
+      "mainCategoryIdLink": 3,
+      "title": "신용평가사와 함께 하는 정확한 점수관리",
+      "subTitle": "그동안 어려웠던 신용 점수 어떻게 관리하면 될까요?",
+      "url": "/images/mainSliderMock/mainSlider3.png",
+      "backColor": "#00479d"
+    },
+    {
+      "eventId": 2,
+      "mainCategoryIdLink": 2,
+      "title": "놓치고 있는 것은 없나요?",
+      "subTitle": "무려 200개의 취미를 위클래스에서 찾아보세요",
+      "url": "/images/mainSliderMock/mainSlider1.png",
+      "backColor": "#f94b00"
+    },
+    {
+      "eventId": 4,
+      "mainCategoryIdLink": 4,
+      "title": "세대별 인기 클래스 선착 할인!",
+      "subTitle": "내 주변에서 가장 인기있는 클래스는 무엇?",
+      "url": "/images/mainSliderMock/mainSlider4.png",
+      "backColor": "#1A1A1A"
+    }
+  ]
+}

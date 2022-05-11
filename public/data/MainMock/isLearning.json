@@ -1,0 +1,38 @@
+{
+  "result": [
+    {
+      "id": 1,
+      "type": "Learning",
+      "products": [
+        {
+          "id": 41,
+          "content_name": "이수광의 유튜브 크리에이터 강좌",
+          "creator_name": "이수광",
+          "thumb_img": "https://cdn.class101.net/images/15de840b-15a1-409b-928d-af597b5f4ab7/750xauto.webp",
+          "price_amount": 210000,
+          "discount_rate": 10,
+          "discount_coupon": null,
+          "month": 4,
+          "like_amount": 122,
+          "is_liked": false,
+          "is_learning": true,
+          "status": "Event"
+        },
+        {
+          "id": 42,
+          "content_name": "이수광의 유튜브 크리에이터 강좌",
+          "creator_name": "이수광",
+          "thumb_img": "https://cdn.class101.net/images/cb2119ec-b977-49e3-a1a4-b674081ed809/750xauto.webp",
+          "price_amount": 210000,
+          "discount_rate": 10,
+          "discount_coupon": null,
+          "month": 4,
+          "like_amount": 122,
+          "is_liked": false,
+          "is_learning": true,
+          "status": "Event"
+        }
+      ]
+    }
+  ]
+}

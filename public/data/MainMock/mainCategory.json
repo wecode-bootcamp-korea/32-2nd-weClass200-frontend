@@ -1,0 +1,259 @@
+{
+  "result": [
+    {
+      "id": 1,
+      "type": "Best",
+      "products": [
+        {
+          "id": 1,
+          "content_name": "그럴거면 내가 한다, 풀스택 강좌",
+          "creator_name": "유동혁",
+          "thumb_img": "https://cdn.class101.net/images/55b1d8db-57b8-4f3e-b79c-4d731a840386/750xauto.webp",
+          "price_amount": 240000,
+          "discount_rate": 31,
+          "discount_coupon": 2,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false
+        },
+        {
+          "id": 2,
+          "content_name": "바리스타 입문 코스 6시간에 완전 정복",
+          "creator_name": "전예찬",
+          "thumb_img": "https://cdn.class101.net/images/e26f43cb-04ca-48e3-8516-00d9a7ef56dd/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Main"
+        },
+        {
+          "id": 3,
+          "content_name": "지기성의 너무 쉬운 리액트",
+          "creator_name": "지기성",
+          "thumb_img": "https://cdn.class101.net/images/bfaa8a07-8c95-464a-b143-78218a1c1bf6/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Main"
+        },
+        {
+          "id": 4,
+          "content_name": "바리스타 입문 코스 6시간에 완전 정복",
+          "creator_name": "전예찬",
+          "thumb_img": "https://cdn.class101.net/images/223bfc32-cf0b-4fa8-bb75-1bde1263464c/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Main"
+        },
+        {
+          "id": 5,
+          "content_name": "3시간만에 마스터하는 아이들 댄스",
+          "creator_name": "경규현",
+          "thumb_img": "https://cdn.class101.net/images/e8df5f17-68c9-47e3-ad48-afe023b4220d/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Main"
+        },
+        {
+          "id": 6,
+          "content_name": "하라고 할때 좀 해라",
+          "creator_name": "황석영",
+          "thumb_img": "https://cdn.class101.net/images/6868a6f6-a678-44cc-b3b4-e1f6a611eb6a/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Main"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "New",
+      "products": [
+        {
+          "id": 6,
+          "content_name": "이수광의 유튜브 크리에이터 강좌",
+          "creator_name": "이수광",
+          "thumb_img": "https://cdn.class101.net/images/d71d11c1-a4bc-4d90-a19a-dfdff3a19235/750xauto.webp",
+          "price_amount": 210000,
+          "discount_rate": 10,
+          "discount_coupon": null,
+          "month": 4,
+          "like_amount": 122,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "New"
+        },
+        {
+          "id": 7,
+          "content_name": "전예찬의 쏘 이지한 풀스택",
+          "creator_name": "예찬 전",
+          "thumb_img": "https://cdn.class101.net/images/55c44472-cc53-4420-8b15-0e0ec75383a0/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "New"
+        },
+        {
+          "id": 8,
+          "content_name": "이수광의 유튜브 크리에이터 강좌",
+          "creator_name": "이수광",
+          "thumb_img": "https://cdn.class101.net/images/f99d7f13-d30c-4ad4-8913-3d2b12b0e8b4/960xauto.webp",
+          "price_amount": 210000,
+          "discount_rate": 10,
+          "discount_coupon": null,
+          "month": 4,
+          "like_amount": 122,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "New"
+        },
+        {
+          "id": 9,
+          "content_name": "전예찬의 쏘 이지한 풀스택",
+          "creator_name": "예찬 전",
+          "thumb_img": "https://cdn.class101.net/images/811f18d4-8af6-4b1e-8bf2-df1dcd3b2e44/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "New"
+        },
+        {
+          "id": 10,
+          "content_name": "전예찬의 쏘 이지한 풀스택",
+          "creator_name": "예찬 전",
+          "thumb_img": "https://cdn.class101.net/images/7c9a63ba-68c9-4ad7-b2e7-fa8652c2bbef/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "New"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "Sale",
+      "products": [
+        {
+          "id": 11,
+          "content_name": "내집마련",
+          "creator_name": "기성",
+          "thumb_img": "https://cdn.class101.net/images/b50a51a8-b06d-4bb6-97a1-1371a179573a/960xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Sale"
+        },
+        {
+          "id": 12,
+          "content_name": "안남규의 프로그래밍과 리셀 이론",
+          "creator_name": "안남규",
+          "thumb_img": "https://cdn.class101.net/images/9697816d-19b2-4815-bcf3-c0d817dc7a62/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Sale"
+        },
+        {
+          "id": 13,
+          "content_name": "내집마련",
+          "creator_name": "기성",
+          "thumb_img": "https://cdn.class101.net/images/aeb20d86-9d16-460d-aec4-7b1f434e1cb6/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Sale"
+        },
+        {
+          "id": 14,
+          "content_name": "안남규의 프로그래밍과 리셀 이론",
+          "creator_name": "안남규",
+          "thumb_img": "https://cdn.class101.net/images/24cff95c-a6a4-4c0c-b266-3cda58cd0be5/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Sale"
+        },
+        {
+          "id": 15,
+          "content_name": "내집마련",
+          "creator_name": "기성",
+          "thumb_img": "https://cdn.class101.net/images/b50a51a8-b06d-4bb6-97a1-1371a179573a/960xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Sale"
+        },
+        {
+          "id": 16,
+          "content_name": "안남규의 프로그래밍과 리셀 이론",
+          "creator_name": "안남규",
+          "thumb_img": "https://cdn.class101.net/images/fb3fa3bd-d3cb-4cc6-bba8-9d0eba4ad75a/750xauto.webp",
+          "price_amount": 720000,
+          "discount_rate": 36,
+          "discount_coupon": null,
+          "month": 6,
+          "like_amount": 1142,
+          "is_liked": false,
+          "is_learning": false,
+          "status": "Sale"
+        }
+      ]
+    }
+  ]
+}

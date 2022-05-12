@@ -18,7 +18,7 @@ function Nav() {
       <Wrapper>
         <Container>
           <Logo src={logoSrc} />
-          <Title to="">클래스</Title>
+          <Title to="/">클래스</Title>
           <SearchBar />
           <ProfileWrapper PostUserData={PostUserData} isLogIn={isLogIn} />
         </Container>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import List from "./List/List";
+import { config } from "../../../config";
 
 function DropDown() {
   const [isHover, setIsHover] = useState(false);
@@ -15,9 +16,9 @@ function DropDown() {
   }
 
   useEffect(() => {
-    fetch(`/data/NavMock/NavMock.json`)
+    fetch(config.nav)
       .then(res => res.json())
-      .then(data => setCategoryData(data));
+      .then(data => setCategoryData(data.result));
   }, []);
 
   return (

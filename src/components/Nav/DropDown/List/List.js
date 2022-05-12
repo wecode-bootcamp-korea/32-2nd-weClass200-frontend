@@ -5,14 +5,17 @@ import styled from "styled-components";
 function List({ menuMouseIn, menuMouseOut, content, isHover }) {
   return (
     <Wrapper>
-      <MainCategory to={content.mainLink} onMouseOver={menuMouseIn}>
+      <MainCategory
+        to={`products?category=${content.category}`}
+        onMouseOver={menuMouseIn}
+      >
         {content.category}
       </MainCategory>
       <DivBox isHover={isHover}>
         <DropMenu isHover={isHover} onMouseLeave={menuMouseOut}>
           {content.subCategory.map(content => (
             <SubCategory
-              to={`${content.subLink}${content.id}`}
+              to={`products?category=${content.subTitle}`}
               key={content.id}
             >
               {content.subTitle}

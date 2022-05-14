@@ -6,9 +6,9 @@ import Main from "./pages/Main/Main";
 import Auth from "./pages/Auth/Auth";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import ProductList from "./pages/ProductList/ProductList";
+import Payment from "./pages/Payment/Payment";
 import LogIn from "./pages/User/LogIn/LogIn";
 import SignUp from "./pages/User/SignUp/SignUp";
-// import Payment from "./pages/User/Payment/Payment";
 
 function Router() {
   return (
@@ -20,9 +20,10 @@ function Router() {
           <Route path="/" element={<Main />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/productDetail" element={<ProductDetail />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
-          {/* <Route path="/payment" element={<Payment />} /> */}
+          <Route path="/payment/:id" element={<Payment />} />
         </Routes>
         <Footer />
       </BrowserRouter>

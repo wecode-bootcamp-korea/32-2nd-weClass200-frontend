@@ -23,7 +23,7 @@ function Nav() {
           <ProfileWrapper PostUserData={PostUserData} isLogIn={isLogIn} />
         </Container>
       </Wrapper>
-      <DropDown />
+      {/* <DropDown /> */}
     </NavFixed>
   );
 }

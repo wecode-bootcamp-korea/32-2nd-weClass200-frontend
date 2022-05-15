@@ -151,7 +151,6 @@ const CategoryGrid = styled.div`
 
 const CategortTitle = styled.span`
   position: absolute;
-
   top: -30px;
   left: 0;
   font-size: 25px;

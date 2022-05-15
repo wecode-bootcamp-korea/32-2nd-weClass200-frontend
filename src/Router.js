@@ -9,6 +9,7 @@ import ProductList from "./pages/ProductList/ProductList";
 import Payment from "./pages/Payment/Payment";
 import LogIn from "./pages/User/LogIn/LogIn";
 import SignUp from "./pages/User/SignUp/SignUp";
+import Creator from "./pages/Creator/Creator";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/creator" element={<Creator />} />
         <Route path="/payment/:id" element={<Payment />} />
       </Routes>
       <Footer />

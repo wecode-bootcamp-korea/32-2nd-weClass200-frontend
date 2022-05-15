@@ -72,7 +72,7 @@ function Footer() {
 export default Footer;
 
 const FooterLayout = styled.div`
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   flex-direction: column;
   justify-content: center;

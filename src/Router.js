@@ -10,6 +10,7 @@ import Payment from "./pages/Payment/Payment";
 import LogIn from "./pages/User/LogIn/LogIn";
 import SignUp from "./pages/User/SignUp/SignUp";
 import Creator from "./pages/Creator/Creator";
+import Mypage from "./pages/Mypage/Mypage";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/creator" element={<Creator />} />
         <Route path="/payment/:id" element={<Payment />} />
+        <Route path="/mypage" element={<Mypage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

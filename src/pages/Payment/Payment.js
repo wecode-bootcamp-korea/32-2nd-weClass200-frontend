@@ -126,12 +126,7 @@ const Payment = () => {
               })}
             </Div>
           </Section>
-          <Button
-            onClick={handlePayBtn}
-            fontWeight
-            color="white"
-            bgColor="#FF7129"
-          >
+          <Button fontWeight color="white" bgColor="#FF7129">
             결제하기
           </Button>
         </SectionWrap>

@@ -15,7 +15,7 @@ const Product = ({
   month,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [productId, setProductId] = useState([]);
+  const [productId, setProductId] = useState();
   const [heartAmount, setHeartAmount] = useState(likeAmount);
   const navigate = useNavigate();
 
@@ -26,28 +26,26 @@ const Product = ({
   }, [id, isLiked]);
 
   useEffect(() => {
-    setProductId(id);
-  }, [id, isLiked]);
-
-  useEffect(() => {
     fetch(`${config.like}`, {
       method: "POST",
       body: JSON.stringify({
-        user_id: "1",
-        product_id: productId,
+        product_id: Number(productId),
       }),
     });
-  }, [productId]);
+  }, [isLiked]);
 
-  const handleCountChange = () => {
+  const handleCountChange = e => {
     setIsLiked(!isLiked);
+    setProductId(e.target.id);
   };
 
   const discountPrice =
     priceAmount * parseFloat(`0.${100 - discountRate}`) - discountCoupon;
+
   const goToProductDetail = id => {
     navigate(`/products/${id}`);
   };
+
   return (
     <ProductItem>
       <ProductImgBox>

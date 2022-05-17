@@ -10,33 +10,29 @@ import "slick-carousel/slick/slick-theme.css";
 
 const ProductList = () => {
   const [productList, setProductList] = useState([]);
-  const [offset, setOffSet] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`${config.list}${location.search}?limit=${LIMIT}&offset=${offset}`)
+    fetch(`${config.list}${location.search}`)
       .then(res => res.json())
       .then(product => {
-        setProductList(prev => [...prev, ...product.result]);
+        setProductList(product.result);
       });
-  }, [location.search, offset]);
-
-  window.onscroll = () => {
-    window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight && setOffSet(prev => prev + 1);
-  };
+  }, [location.search]);
 
   return (
     <Wrapper>
       <ProductListCarousel />
       <ProductSortButtons>
         {PRODUCT_SORT_BUTTON.map(list => {
+          const isCurrent = location.search.includes(list.sortUrl);
           return (
             <ProductSortButton
               title={list.title}
               key={list.id}
               sortUrl={list.sortUrl}
-              setProductList={setProductList}
+              isCurrent={isCurrent}
+              test={PRODUCT_SORT_BUTTON}
             />
           );
         })}
@@ -53,7 +49,6 @@ const ProductList = () => {
               discountCoupon={product.discount_coupon}
               likeAmount={product.like_amount}
               discountRate={product.discount_rate}
-              f
               priceAmount={product.price_amount}
               month={product.month}
             />
@@ -92,32 +87,30 @@ const AllProduct = styled.div`
   margin: 0 auto;
 `;
 
-const LIMIT = 5;
-
 const PRODUCT_SORT_BUTTON = [
   {
     id: 1,
     title: "리뷰많은순",
-    sortUrl: "review",
+    sortUrl: "&sort_method=review",
   },
   {
     id: 2,
     title: "찜많은순",
-    sortUrl: "like",
+    sortUrl: "&sort_method=like",
   },
   {
     id: 3,
     title: "별점높은순",
-    sortUrl: "star",
+    sortUrl: "&sort_method=score",
   },
   {
     id: 4,
     title: "최신순",
-    sortUrl: "new",
+    sortUrl: "&sort_method=new",
   },
   {
     id: 5,
     title: "가격순",
-    sortUrl: "price",
+    sortUrl: "&sort_method=price",
   },
 ];

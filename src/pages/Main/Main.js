@@ -18,16 +18,15 @@ function Main() {
   }
 
   useEffect(() => {
-    fetch(`/data/MainMock/mainCategory.json`)
-      // fetch(config.main)
+    fetch(config.main)
       .then(res => res.json())
       .then(data => setProducts(data.result));
   }, []);
 
   useEffect(() => {
-    fetch(config.list)
+    fetch(config.main)
       .then(res => res.json())
-      .then(data => setCategoryProducts(data.result));
+      .then(data => setCategoryProducts(data.new_products));
   }, []);
 
   useEffect(() => {
@@ -60,24 +59,26 @@ function Main() {
         />
       ))}
       <CategoryWrapper>
-        <CategoryGrid>
-          <CategortTitle>강의 전체 보기 </CategortTitle>
-          {categoryProducts.map(product => (
-            <MainProducts
-              goToDetail={goToDetail}
-              key={product.id}
-              id={product.id}
-              thumbImg={product.thumb_img}
-              contentName={product.content_name}
-              creatorName={product.creator_name}
-              discountCoupon={product.discount_coupon}
-              likeAmount={product.like_amount}
-              discountRate={product.discount_rate}
-              priceAmount={product.price_amount}
-              month={product.month}
-            />
-          ))}
-        </CategoryGrid>
+        {categoryProducts && (
+          <CategoryGrid>
+            <CategortTitle>강의 전체 보기 </CategortTitle>
+            {categoryProducts.map(product => (
+              <MainProducts
+                goToDetail={goToDetail}
+                key={product.id}
+                id={product.id}
+                thumbImg={product.thumb_img}
+                contentName={product.content_name}
+                creatorName={product.creator_name}
+                discountCoupon={product.discount_coupon}
+                likeAmount={product.like_amount}
+                discountRate={product.discount_rate}
+                priceAmount={product.price_amount}
+                month={product.month}
+              />
+            ))}
+          </CategoryGrid>
+        )}
       </CategoryWrapper>
       <Hr />
     </MainDiv>

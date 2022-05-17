@@ -18,23 +18,25 @@ function DropDown() {
   useEffect(() => {
     fetch(config.nav)
       .then(res => res.json())
-      .then(data => setCategoryData(data.result));
+      .then(data => setCategoryData(data.results));
   }, []);
 
   return (
     <Wrapper>
       <Container>
-        <Lists>
-          {categoryData.map(content => (
-            <List
-              menuMouseIn={menuMouseIn}
-              menuMouseOut={menuMouseOut}
-              content={content}
-              isHover={isHover}
-              key={content.id}
-            />
-          ))}
-        </Lists>
+        {categoryData && (
+          <Lists>
+            {categoryData.map(content => (
+              <List
+                menuMouseIn={menuMouseIn}
+                menuMouseOut={menuMouseOut}
+                content={content}
+                isHover={isHover}
+                key={content.id}
+              />
+            ))}
+          </Lists>
+        )}
       </Container>
     </Wrapper>
   );

@@ -12,22 +12,19 @@ import SignUp from "./pages/User/SignUp/SignUp";
 
 function Router() {
   return (
-    <div>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/kakaoauth" element={<Auth />} />
-          <Route path="/" element={<Main />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/productDetail" element={<ProductDetail />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/payment/:id" element={<Payment />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/kakaoauth" element={<Auth />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/payment/:id" element={<Payment />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

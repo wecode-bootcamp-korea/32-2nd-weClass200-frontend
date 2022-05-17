@@ -41,6 +41,8 @@ const Auth = () => {
         .then(res => res.json())
         .then(data => {
           localStorage.setItem("new_token", data.new_token);
+          localStorage.setItem("name", data.name);
+          localStorage.setItem("img", data.img);
           navigate("/");
         });
   }, [token]);

@@ -7,57 +7,97 @@ import { useNavigate } from "react-router-dom";
 import { config } from "../../config";
 
 function Main() {
-  const [products, setProducts] = useState([]);
   const [categoryProducts, setCategoryProducts] = useState([]);
   const [userLearn, setUserLearn] = useState([]);
+  const [bestProducts, setBestProducts] = useState([]);
+  const [saleProducts, setSaleProducts] = useState([]);
+  const [newProducts, setNewProducts] = useState([]);
 
   const navigate = useNavigate();
 
   function goToDetail(id) {
-    navigate(`/productDetail/${id}`);
+    navigate(`/products/${id}`);
   }
 
   useEffect(() => {
-    fetch(config.main)
-      .then(res => res.json())
-      .then(data => setProducts(data.result));
+    if (localStorage.getItem("new_token")) {
+      fetch(config.privateBest)
+        .then(res => res.json())
+        .then(data => setBestProducts(data));
+    } else {
+      fetch(config.publicBest)
+        .then(res => res.json())
+        .then(data => setBestProducts(data));
+    }
   }, []);
 
   useEffect(() => {
-    fetch(config.main)
-      .then(res => res.json())
-      .then(data => setCategoryProducts(data.new_products));
+    if (localStorage.getItem("new_token")) {
+      fetch(config.privateSale)
+        .then(res => res.json())
+        .then(data => setSaleProducts(data));
+    } else {
+      fetch(config.publicSale)
+        .then(res => res.json())
+        .then(data => setSaleProducts(data));
+    }
   }, []);
 
   useEffect(() => {
-    fetch(`/data/MainMock/isLearning.json`)
-      .then(res => res.json())
-      .then(data => setUserLearn(data.result));
+    if (localStorage.getItem("new_token")) {
+      fetch(config.privateNew)
+        .then(res => res.json())
+        .then(data => setNewProducts(data));
+    } else {
+      fetch(config.publicNew)
+        .then(res => res.json())
+        .then(data => setNewProducts(data));
+    }
   }, []);
+
+  useEffect(() => {
+    fetch(`http://10.58.6.184:8000/users/mypage`)
+      .then(res => res.json())
+      .then(data => setUserLearn(data));
+  }, []);
+
+  //TODO
+  // useEffect(() => {
+  //   fetch(config.privateNew)
+  //     .then(res => res.json())
+  //     .then(data => console.log(data));
+  // }, []);
+  //
 
   return (
     <MainDiv>
       <MainCarousel />
       {localStorage.getItem("new_token") && (
-        <>
-          {userLearn.map(product => (
-            <ClassCarousel
-              goToDetail={goToDetail}
-              key={product.id}
-              type={product.type}
-              products={product.products}
-            />
-          ))}
-        </>
-      )}
-      {products.map(product => (
         <ClassCarousel
           goToDetail={goToDetail}
-          key={product.id}
-          type={product.type}
-          products={product.products}
+          type="Learning"
+          products={userLearn}
         />
-      ))}
+      )}
+
+      <ClassCarousel
+        goToDetail={goToDetail}
+        type="Best"
+        products={bestProducts}
+      />
+
+      <ClassCarousel
+        goToDetail={goToDetail}
+        type="New"
+        products={newProducts}
+      />
+
+      <ClassCarousel
+        goToDetail={goToDetail}
+        type="Sale"
+        products={saleProducts}
+      />
+
       <CategoryWrapper>
         {categoryProducts && (
           <CategoryGrid>

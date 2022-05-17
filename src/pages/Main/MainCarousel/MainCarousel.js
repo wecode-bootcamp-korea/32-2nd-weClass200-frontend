@@ -13,6 +13,7 @@ function MainCarousel() {
       .then(res => res.json())
       .then(data => setCarouselData(data.result));
   }, []);
+
   return (
     <CarouselWrapper>
       <Main>
@@ -24,7 +25,7 @@ function MainCarousel() {
               key={caruselData.eventId}
             >
               <MainCarouselBox>
-                <MainCarouselWrapper to="/mainCategory">
+                <MainCarouselWrapper to="/products">
                   <CarouselImg src={caruselData.url} />
                 </MainCarouselWrapper>
                 <CarouselTextWrapper>

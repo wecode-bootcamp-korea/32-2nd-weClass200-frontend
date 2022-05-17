@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { config } from "../../../config";
 
 const MainProducts = ({
   id,
@@ -21,6 +22,15 @@ const MainProducts = ({
     isLiked
       ? setHeartAmount(prev => prev + 1)
       : setHeartAmount(prev => prev - 1);
+  }, [isLiked]);
+
+  useEffect(() => {
+    fetch(`${config.like}`, {
+      method: "POST",
+      body: JSON.stringify({
+        product_id: Number(id),
+      }),
+    });
   }, [isLiked]);
 
   const countUp = () => {
@@ -58,25 +68,29 @@ const MainProducts = ({
           <ProductCreator>{creatorName}</ProductCreator>
           <ProductName>{contentName}</ProductName>
         </ProductInfoBox>
-        <HeartIconBox>
-          <HeartIcon
-            className="fa-solid fa-heart"
-            fontSize="18px"
-            isLiked={isLiked}
-          />
-          <HeartCount>{heartAmount}</HeartCount>
-        </HeartIconBox>
-        <PriceBox
-          onClick={() => {
-            goToDetail(id);
-          }}
-        >
-          <DiscountRate>{discountRate}%</DiscountRate>
-          <InstallmentPrice>
-            {(priceAmount / month).toLocaleString()}원
-          </InstallmentPrice>
-          <InstallmentMonth>({month}개월)</InstallmentMonth>
-        </PriceBox>
+        {priceAmount && (
+          <HeartIconBox>
+            <HeartIcon
+              className="fa-solid fa-heart"
+              fontSize="18px"
+              isLiked={isLiked}
+            />
+            <HeartCount>{heartAmount}</HeartCount>
+          </HeartIconBox>
+        )}
+        {priceAmount && (
+          <PriceBox
+            onClick={() => {
+              goToDetail(id);
+            }}
+          >
+            <DiscountRate>{discountRate}%</DiscountRate>
+            <InstallmentPrice>
+              {parseInt(priceAmount / month).toLocaleString()}원
+            </InstallmentPrice>
+            <InstallmentMonth>({month}개월)</InstallmentMonth>
+          </PriceBox>
+        )}
       </ProductDetailBox>
     </ProductItem>
   );
@@ -102,8 +116,6 @@ const ProductImgBox = styled.div`
 const ProductImg = styled.img`
   width: 100%;
   height: 100%;
-  height: ${({ type }) =>
-    type === "New" ? "cover" : type === "Sale" ? "cover" : "contain"};
   object-fit: ${({ type }) =>
     type === "New" ? "cover" : type === "Sale" ? "cover" : "contain"};
   transition: all 0.2s ease-in-out;

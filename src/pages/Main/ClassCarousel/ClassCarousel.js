@@ -23,9 +23,10 @@ function ClassCarousel({ products, type }) {
   }
 
   const navigate = useNavigate();
+  const product = products.products || products.myclasses;
 
   function goToDetail(id) {
-    navigate(`/productDetail/${id}`);
+    navigate(`/products/${id}`);
   }
 
   return (
@@ -36,25 +37,27 @@ function ClassCarousel({ products, type }) {
             ? "현재 수강 중인 강의"
             : `실시간 인기 ${type} 클래스`}
         </ClassCoverTitle>
-        <Carousel {...selectSettings(type)}>
-          {products.map(data => (
-            <ImageWrapper key={data.id}>
-              <MainProducts
-                type={type}
-                goToDetail={goToDetail}
-                id={data.id}
-                thumbImg={data.thumb_img}
-                contentName={data.content_name}
-                creatorName={data.creator_name}
-                discountCoupon={data.discount_coupon}
-                likeAmount={data.like_amount}
-                discountRate={data.discount_rate}
-                priceAmount={data.price_amount}
-                month={data.month}
-              />
-            </ImageWrapper>
-          ))}
-        </Carousel>
+        {product && (
+          <Carousel {...selectSettings(type)}>
+            {product.map(data => (
+              <ImageWrapper key={data.id}>
+                <MainProducts
+                  type={type}
+                  goToDetail={goToDetail}
+                  id={data.id}
+                  thumbImg={data.thumb_img}
+                  contentName={data.content_name}
+                  creatorName={data.creator_name}
+                  discountCoupon={data.discount_coupon}
+                  likeAmount={data.like_amount}
+                  discountRate={data.discount_rate}
+                  priceAmount={data.price_amount}
+                  month={data.month}
+                />
+              </ImageWrapper>
+            ))}
+          </Carousel>
+        )}
       </CarouselWrapper>
     </ClassCarouselSlide>
   );
@@ -63,7 +66,7 @@ function ClassCarousel({ products, type }) {
 export default ClassCarousel;
 
 const settingsMain = {
-  infinite: false,
+  infinite: true,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
@@ -79,7 +82,7 @@ const settingsNew = {
 };
 
 const settingsSale = {
-  infinite: false,
+  infinite: true,
   speed: 400,
   slidesToShow: 3,
   slidesToScroll: 1,
@@ -89,7 +92,7 @@ const settingsSale = {
 const settingsLearning = {
   infinite: false,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
   arrows: true,
 };

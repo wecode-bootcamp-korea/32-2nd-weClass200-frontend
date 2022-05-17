@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Slider from "react-slick";
 
@@ -9,7 +10,9 @@ const ProductListCarousel = () => {
         {CAROUSEL_IMG_SOURCE.map(image => {
           return (
             <CarouselBackground bgColor={image.bgColor} key={image.id}>
-              <CarouselImage alt={image.alt} src={image.src} />
+              <Link to={`${image.id}`}>
+                <CarouselImage alt={image.alt} src={image.src} />
+              </Link>
             </CarouselBackground>
           );
         })}
@@ -22,9 +25,8 @@ export default ProductListCarousel;
 
 const CarouselBackground = styled.div`
   background-color: ${props => props.bgColor};
-  padding: 0 27%;
+  padding: 0 300px;
 `;
-
 const SliderWrapper = styled.div`
   width: 1179px;
   margin: 0 auto;
@@ -84,9 +86,10 @@ const PrevArrow = styled.button`
 `;
 
 const CarouselImage = styled.img`
-  padding: 10px 0;
-  height: 200px;
-  width: 100%;
+  height: 320px;
+  width: 600px;
+  object-fit: contain;
+
   background-color: ${props => props.bgColor};
 `;
 
@@ -104,23 +107,21 @@ const settings = {
 
 const CAROUSEL_IMG_SOURCE = [
   {
-    id: 1,
+    id: 27,
     alt: "풍경사진1",
-    src: "https://images.unsplash.com/photo-1619120238346-978e07731e77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1769&q=80",
-    bgColor: "#f3223b",
-  },
-  {
-    id: 2,
-
-    alt: "풍경사진2",
-    src: "https://images.unsplash.com/photo-1619120238346-978e07731e77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1769&q=80",
-    bgColor: "#1A1A1A",
+    src: "https://user-images.githubusercontent.com/95524491/168978602-0d3f6db8-1280-4698-ad17-3f9a704ceb05.png",
+    bgColor: "#4B2093",
   },
   {
     id: 3,
-
+    alt: "풍경사진2",
+    src: "https://github.com/BDjaekwanee/project-imgaes/blob/master/img_003.png?raw=true",
+    bgColor: "#3077D5",
+  },
+  {
+    id: 9,
     alt: "풍경사진3",
-    src: "https://images.unsplash.com/photo-1463595515259-d8ef281955b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    bgColor: "#00479d",
+    src: "https://github.com/BDjaekwanee/project-imgaes/blob/master/img_011.png?raw=true",
+    bgColor: "#1C1C1C",
   },
 ];

@@ -1,29 +1,24 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const ProductSortButton = ({ title, sortUrl }) => {
+const ProductSortButton = ({ title, sortUrl, isCurrent, test }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // TODO(API주소 수정)
+  const sortList = () => {
+    const currentUrl = `${location.pathname}${location.search}`;
+    const currentIdx = test.findIndex(el => currentUrl.includes(el.sortUrl));
 
-  // useEffect(() => {
-  //   fetch(`http://proudcts/${location.search}`)
-  //     .then(res => res.json())
-  //     .then(data => setProductList(data));
-  // }, [location.search]);
-
-  const sortList = sort => {
-    const sortedList = `?sort=${sort}`;
-    navigate(sortedList);
+    if (currentIdx !== -1) {
+      navigate(currentUrl.replace(test[currentIdx].sortUrl, sortUrl));
+    } else {
+      navigate(`${currentUrl}${sortUrl}`);
+    }
   };
 
   return (
-    <ProductSortBtn
-      onClick={() => {
-        sortList(sortUrl);
-      }}
-    >
+    <ProductSortBtn onClick={sortList} isCurrent={isCurrent}>
       {title}
     </ProductSortBtn>
   );
@@ -42,9 +37,13 @@ const ProductSortBtn = styled.button`
   border-radius: 10px;
   font-weight: 600;
 
+  ${({ isCurrent }) =>
+    isCurrent &&
+    ` background-color: black;
+    color: white;`}
+
   &:hover {
     background-color: black;
     color: white;
-    transform: scale(1.2);
   }
 `;

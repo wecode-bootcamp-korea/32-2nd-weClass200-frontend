@@ -2,16 +2,16 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const ProductSortButton = ({ title, sortUrl, isCurrent, test }) => {
+const ProductSortButton = ({ title, sortUrl, isCurrent, sortBtn }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const sortList = () => {
     const currentUrl = `${location.pathname}${location.search}`;
-    const currentIdx = test.findIndex(el => currentUrl.includes(el.sortUrl));
+    const currentIdx = sortBtn.findIndex(el => currentUrl.includes(el.sortUrl));
 
     if (currentIdx !== -1) {
-      navigate(currentUrl.replace(test[currentIdx].sortUrl, sortUrl));
+      navigate(currentUrl.replace(sortBtn[currentIdx].sortUrl, sortUrl));
     } else {
       navigate(`${currentUrl}${sortUrl}`);
     }

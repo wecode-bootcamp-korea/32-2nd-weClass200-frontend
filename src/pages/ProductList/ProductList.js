@@ -32,7 +32,7 @@ const ProductList = () => {
               key={list.id}
               sortUrl={list.sortUrl}
               isCurrent={isCurrent}
-              test={PRODUCT_SORT_BUTTON}
+              sortBtn={PRODUCT_SORT_BUTTON}
             />
           );
         })}

@@ -7,7 +7,7 @@ function ProfileWrapper() {
 
   function removeToken() {
     const isLoggedIn = localStorage.getItem("new_token");
-    if (isLoggedIn) {
+    if (!isLoggedIn) {
       localStorage.clear();
       navigate("/");
     } else {
@@ -24,7 +24,7 @@ function ProfileWrapper() {
       {isTokenCheck && (
         <>
           <ProfileTab to="/creator">크리에이터 센터</ProfileTab>
-          <ProfileTab to="/user">내 클래스</ProfileTab>
+          <ProfileTab to="/mypage">내 클래스</ProfileTab>
         </>
       )}
       <Login to="login" onClick={removeToken}>

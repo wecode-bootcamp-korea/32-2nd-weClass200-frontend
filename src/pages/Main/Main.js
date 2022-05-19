@@ -14,9 +14,14 @@ function Main() {
   const [newProducts, setNewProducts] = useState([]);
 
   const navigate = useNavigate();
+  const isTokenCheck = localStorage.getItem("new_token");
 
   function goToDetail(id) {
-    navigate(`/products/${id}`);
+    if (isTokenCheck) {
+      navigate(`/products/private/${id}`);
+    } else {
+      navigate(`products/public/${id}`);
+    }
   }
 
   useEffect(() => {

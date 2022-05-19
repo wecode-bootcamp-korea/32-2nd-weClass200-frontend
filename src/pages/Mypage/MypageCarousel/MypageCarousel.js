@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MypageProduct from "./MypageProduct";
 
-function MypageCarousel({ products, type }) {
+function MypageCarousel({ products }) {
   const navigate = useNavigate();
 
   function goToDetail(id) {
@@ -43,10 +43,10 @@ function MypageCarousel({ products, type }) {
 export default MypageCarousel;
 
 const settingsMain = {
-  infinite: true,
+  infinite: false,
   speed: 500,
   slidesToShow: 3,
-  slidesToScroll: 1,
+  slidesToScroll: 2,
   arrows: true,
 };
 
@@ -76,11 +76,4 @@ const CarouselWrapper = styled.div`
     }
   }
 `;
-
-const ClassCoverTitle = styled.h1`
-  font-size: 25px;
-  font-weight: 700;
-  margin-bottom: 10px;
-`;
-
 const ImageWrapper = styled.div``;

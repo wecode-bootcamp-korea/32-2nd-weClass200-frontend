@@ -20,14 +20,16 @@ function Mypage() {
       .then(data => setMyClasses(data.myclasses));
   }, []);
 
+  const userName = localStorage.getItem("name");
+  const profileImg = localStorage.getItem("img");
+
   return (
     <Wrapper>
       <MypageMenuList>
         <UserInfo>
-          <p>송재관</p>
-          <p>abc@gmail.com</p>
+          <ProfileImg src={profileImg} />
+          <p>{userName}</p>
         </UserInfo>
-
         <LevelTitle>
           <p>내 등급</p>
         </LevelTitle>
@@ -86,19 +88,7 @@ function Mypage() {
         </MypageContentList>
 
         <PurchaseTitle>구매내역</PurchaseTitle>
-        {myClasses.map(products => {
-          return (
-            <MypageProduct
-              id={products.id}
-              key={products.id}
-              thumbImg={products.thumb_img}
-              contentName={products.content_name}
-              creatorName={products.creator_name}
-              discountRate={products.discount_rate}
-              priceAmount={products.price_amount}
-            />
-          );
-        })}
+        <MypageCarousel products={myClasses} />
       </MypageContent>
     </Wrapper>
   );
@@ -118,16 +108,22 @@ const MypageMenuList = styled.div`
 `;
 
 const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
   padding-bottom: 60px;
-  & :first-child {
+  & :last-child {
+    margin-top: 20px;
+    margin-left: 20px;
     font-size: 28px;
     font-weight: bold;
     padding-bottom: 10px;
   }
-  & :last-child {
-    font-size: 12px;
-    color: gray;
-  }
+`;
+
+const ProfileImg = styled.img`
+  width: 50px;
+  border-radius: 100%;
 `;
 
 const LevelTitle = styled.div`

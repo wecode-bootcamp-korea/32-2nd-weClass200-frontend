@@ -16,7 +16,7 @@ const MainProducts = ({
   type,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [heartAmount, setHeartAmount] = useState(likeAmount);
+  const [heartAmount, setHeartAmount] = useState(likeAmount + 5);
 
   useEffect(() => {
     isLiked
@@ -84,7 +84,7 @@ const MainProducts = ({
               goToDetail(id);
             }}
           >
-            <DiscountRate>{discountRate}%</DiscountRate>
+            {discountRate && <DiscountRate>{discountRate}%</DiscountRate>}
             <InstallmentPrice>
               {parseInt(priceAmount / month).toLocaleString()}원
             </InstallmentPrice>

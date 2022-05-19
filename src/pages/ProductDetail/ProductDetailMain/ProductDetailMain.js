@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-scroll";
 import { CLASS_INFO, TAB_MENU } from "../ProductDetailData";
 import styled from "styled-components";
@@ -19,6 +19,7 @@ const ProductDetailMain = ({ detail, getData }) => {
   const reviewBox = useRef(null);
   const tabMenu = useRef(null);
   const navigate = useNavigate();
+  const params = useParams();
 
   const coupon = detail[0]?.discount_coupon;
   const reviewLength = detail[0]?.reviews.length;
@@ -62,9 +63,9 @@ const ProductDetailMain = ({ detail, getData }) => {
   const handleReviewPost = () => {
     fetch(`${config.review}`, {
       method: "POST",
+      headers: { Authorization: localStorage.getItem("new_token") },
       body: JSON.stringify({
-        user_id: "3",
-        product_id: "1",
+        product_id: params.id,
         content: reviewValue,
         rating: Number(ratingValue),
         image_url: fileImg,
@@ -91,9 +92,9 @@ const ProductDetailMain = ({ detail, getData }) => {
   const handleDeleteClick = () => {
     fetch(`${config.review}`, {
       method: "DELETE",
+      headers: { Authorization: localStorage.getItem("new_token") },
       body: JSON.stringify({
-        user_id: "3",
-        product_id: "1",
+        product_id: params.id,
       }),
     }).then(res => getData());
   };

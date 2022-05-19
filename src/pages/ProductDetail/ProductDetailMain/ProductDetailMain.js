@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
 import { CLASS_INFO, TAB_MENU } from "../ProductDetailData";
 import styled from "styled-components";
@@ -17,11 +18,14 @@ const ProductDetailMain = ({ detail, getData }) => {
 
   const reviewBox = useRef(null);
   const tabMenu = useRef(null);
+  const navigate = useNavigate();
 
   const coupon = detail[0]?.discount_coupon;
   const reviewLength = detail[0]?.reviews.length;
   const ratingArr = [];
   const initialValue = 0;
+
+  const isTokenCheck = localStorage.getItem("new_token");
 
   detail[0]?.reviews.map(review => {
     return ratingArr.push(review.rating);
@@ -34,18 +38,17 @@ const ProductDetailMain = ({ detail, getData }) => {
 
   const ratingAverage = ratingAmount / detail[0]?.reviews.length;
 
-  const handleTabClick = () => {
-    tabMenu.current.style.fontWeight = "700";
-    tabMenu.current.style.borderBottom = "2px solid black";
-    tabMenu.current.style.color = "black";
-  };
-
   const handleReviewMore = () => {
     setIsClickedMore(!isClickedMore);
   };
 
   const handleWriteBtn = () => {
-    setOpenModal(true);
+    if (isTokenCheck) {
+      setOpenModal(true);
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate("/login");
+    }
   };
 
   const handleRatingInput = e => {
@@ -115,9 +118,7 @@ const ProductDetailMain = ({ detail, getData }) => {
         {TAB_MENU.map(menu => {
           return (
             <Link key={menu.id} to={String(menu.id)} spy={true} smooth={true}>
-              <TabMenu onClick={handleTabClick} ref={tabMenu}>
-                {menu.title}
-              </TabMenu>
+              <TabMenu ref={tabMenu}>{menu.title}</TabMenu>
             </Link>
           );
         })}
@@ -179,6 +180,7 @@ const ProductDetailMain = ({ detail, getData }) => {
             {detail[0]?.reviews.map(review => {
               return <ReviewImg key={review.id} src={review.review_image} />;
             })}
+            ;
           </ReviewImgBox>
           <Dialog open={openModal}>
             <DialogTitle fontWeight={700} color="white" backgroundColor="black">
@@ -254,11 +256,9 @@ const ProductDetailMain = ({ detail, getData }) => {
         {TAB_MENU.filter(section => section.id !== 0).map(section => {
           return (
             <ContentBox key={section.id}>
-              <Title name={section.id}>
-                {section.id === 1 ? "클래스를 소개합니다." : section.title}
-              </Title>
+              <Title name={section.id}>{section.title}</Title>
               <ContentDummy>
-                {section.id === 5 ? (
+                {section.id === 1 ? (
                   <RefundBox>
                     환불 정책에 따라 구매일로부터 90일까지 환불 요청이 가능하며,
                     <span className="day">&nbsp;7일 까지&nbsp;</span>전액 환불이
@@ -390,7 +390,6 @@ const ContentBox = styled.div`
 const ContentDummy = styled.div`
   width: 100%;
   height: 500px;
-  background-color: beige;
 `;
 
 const ReviewRatingBox = styled.div`

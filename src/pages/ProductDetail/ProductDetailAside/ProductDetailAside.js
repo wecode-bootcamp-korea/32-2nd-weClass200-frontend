@@ -74,7 +74,9 @@ const ProductDetailAside = ({ detail }) => {
                   쿠폰 적용 시, {detail[0]?.month}개월 할부
                 </InstallmentInfo>
                 <Price>
-                  <DiscountRate>{detail[0]?.discount_rate}%</DiscountRate>
+                  {detail[0]?.discount_rate && (
+                    <DiscountRate>{detail[0]?.discount_rate}%</DiscountRate>
+                  )}
                   <MonthPrice>
                     월{(discountPrice / month).toLocaleString()}원
                   </MonthPrice>

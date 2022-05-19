@@ -27,8 +27,9 @@ const MainProducts = ({
   useEffect(() => {
     fetch(`${config.like}`, {
       method: "POST",
+      headers: { Authorization: localStorage.getItem("new_token") },
       body: JSON.stringify({
-        product_id: Number(id),
+        product_id: id,
       }),
     });
   }, [isLiked]);

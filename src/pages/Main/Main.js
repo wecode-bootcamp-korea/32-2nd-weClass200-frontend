@@ -67,7 +67,7 @@ function Main() {
   }, []);
 
   useEffect(() => {
-    fetch("http://10.58.6.184:8000/products/public")
+    fetch("http://10.58.6.184:8000/products/public?limit=20")
       .then(res => res.json())
       .then(data => setCategoryProducts(data.products));
   }, []);

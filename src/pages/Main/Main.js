@@ -61,13 +61,11 @@ function Main() {
       .then(data => setUserLearn(data));
   }, []);
 
-  //TODO
-  // useEffect(() => {
-  //   fetch(config.privateNew)
-  //     .then(res => res.json())
-  //     .then(data => console.log(data));
-  // }, []);
-  //
+  useEffect(() => {
+    fetch("http://10.58.6.184:8000/products/public")
+      .then(res => res.json())
+      .then(data => setCategoryProducts(data.products));
+  }, []);
 
   return (
     <MainDiv>

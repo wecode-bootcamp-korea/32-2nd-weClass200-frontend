@@ -6,7 +6,7 @@ function List({ menuMouseIn, menuMouseOut, content, isHover }) {
   return (
     <Wrapper>
       <MainCategory
-        to={`products?category=${content.category}`}
+        to={`products?type_name=${content.category}`}
         onMouseOver={menuMouseIn}
       >
         {content.category}
@@ -15,7 +15,7 @@ function List({ menuMouseIn, menuMouseOut, content, isHover }) {
         <DropMenu isHover={isHover} onMouseLeave={menuMouseOut}>
           {content.subCategory.map(content => (
             <SubCategory
-              to={`products?category=${content.subTitle}`}
+              to={`products?type_name=${content.subTitle}`}
               key={content.id}
             >
               {content.subTitle}

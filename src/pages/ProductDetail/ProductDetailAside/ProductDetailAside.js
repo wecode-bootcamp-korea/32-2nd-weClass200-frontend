@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { SIDEBAR_BUTTON } from "../ProductDetailData";
 import { Dialog, DialogTitle, DialogContentText } from "@mui/material";
@@ -9,6 +10,8 @@ const ProductDetailAside = ({ detail }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [openCouponModal, setOpenCouponModal] = useState(false);
   const [likeAmount, setLikeAmount] = useState(0);
+  const params = useParams();
+  const navigate = useNavigate();
 
   const price = detail[0]?.price;
   const month = detail[0]?.month;
@@ -17,11 +20,25 @@ const ProductDetailAside = ({ detail }) => {
     price * parseFloat(`0.${100 - detail[0]?.discount_rate}`) - coupon;
 
   const handleLikeClick = () => {
-    setIsLiked(!isLiked);
+    if (isTokenCheck) {
+      setIsLiked(!isLiked);
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate("/login");
+    }
   };
 
   const handleCouponClick = () => {
     setOpenCouponModal(true);
+  };
+
+  const handleBuyClick = () => {
+    if (isTokenCheck) {
+      navigate(`/payment/${params.id}`);
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate("/login");
+    }
   };
 
   useEffect(() => {
@@ -32,12 +49,14 @@ const ProductDetailAside = ({ detail }) => {
     setLikeAmount(isLiked ? likeAmount + 1 : likeAmount - 1);
     fetch(`${config.like}`, {
       method: "POST",
+      headers: { Authorization: localStorage.getItem("new_token") },
       body: JSON.stringify({
-        user_id: "9",
-        product_id: "1",
+        product_id: params.id,
       }),
     });
   }, [isLiked]);
+
+  const isTokenCheck = localStorage.getItem("new_token");
 
   return (
     <ProductDetailAsideWrap>
@@ -126,7 +145,7 @@ const ProductDetailAside = ({ detail }) => {
                 );
               })}
             </ShareBtnBox>
-            <BuyButton>클래스 신청하기</BuyButton>
+            <BuyButton onClick={handleBuyClick}>클래스 신청하기</BuyButton>
           </ProductBuy>
         </SideBarTop>
 

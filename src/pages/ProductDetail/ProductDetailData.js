@@ -5,22 +5,6 @@ export const TAB_MENU = [
   },
   {
     id: 1,
-    title: "클래스 소개",
-  },
-  {
-    id: 2,
-    title: "커리큘럼",
-  },
-  {
-    id: 3,
-    title: "키트 소개",
-  },
-  {
-    id: 4,
-    title: "크리에이터",
-  },
-  {
-    id: 5,
     title: "환불 정책",
   },
 ];

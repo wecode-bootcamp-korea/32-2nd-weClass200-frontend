@@ -7,7 +7,7 @@ function ProfileWrapper() {
 
   function removeToken() {
     const isLoggedIn = localStorage.getItem("new_token");
-    if (!isLoggedIn) {
+    if (isLoggedIn) {
       localStorage.clear();
       navigate("/");
     } else {

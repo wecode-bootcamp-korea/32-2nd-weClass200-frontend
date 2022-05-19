@@ -8,17 +8,26 @@ import ProductListCarousel from "./ProductListCarousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+const OFF_SET = 0;
+
 const ProductList = () => {
   const [productList, setProductList] = useState([]);
+  const [limit, setLimit] = useState(4);
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`${config.list}${location.search}`)
+    fetch(
+      `${config.list}/public${location.search}&offset=${OFF_SET}&limit=${limit}`
+    )
       .then(res => res.json())
       .then(product => {
-        setProductList(product.result);
+        setProductList(product.products);
       });
-  }, [location.search]);
+  }, [location.search, limit]);
+
+  const changeLimit = () => {
+    setLimit(prev => prev + 4);
+  };
 
   return (
     <Wrapper>
@@ -55,6 +64,9 @@ const ProductList = () => {
           );
         })}
       </AllProduct>
+      <NextBtnBox>
+        <NextButton onClick={changeLimit}>더보기</NextButton>
+      </NextBtnBox>
     </Wrapper>
   );
 };
@@ -87,30 +99,49 @@ const AllProduct = styled.div`
   margin: 0 auto;
 `;
 
+const NextBtnBox = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+const NextButton = styled.button`
+  padding: 16px 100px;
+  text-align: center;
+  justify-content: center;
+  border: none;
+  background-color: lightgray;
+  color: black;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+`;
+
 const PRODUCT_SORT_BUTTON = [
   {
     id: 1,
     title: "리뷰많은순",
-    sortUrl: "&sort_method=review",
+    sortUrl: "&ordering=review",
   },
   {
     id: 2,
     title: "찜많은순",
-    sortUrl: "&sort_method=like",
+    sortUrl: "&ordering=like",
   },
   {
     id: 3,
     title: "별점높은순",
-    sortUrl: "&sort_method=score",
+    sortUrl: "&ordering=score",
   },
   {
     id: 4,
     title: "최신순",
-    sortUrl: "&sort_method=new",
+    sortUrl: "&ordering=new",
   },
   {
     id: 5,
-    title: "가격순",
-    sortUrl: "&sort_method=price",
+    title: "가격낮은순",
+    sortUrl: "&ordering=price",
   },
 ];

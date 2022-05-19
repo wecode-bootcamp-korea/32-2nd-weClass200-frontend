@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function List({ menuMouseIn, menuMouseOut, content, isHover }) {
+  const isTokenCheck = localStorage.getItem("new_token");
+
   return (
     <Wrapper>
       <MainCategory
-        to={`products?type_name=${content.category}`}
+        to={
+          isTokenCheck
+            ? `products/private?type_name=${content.category}`
+            : `products/public?type_name=${content.category}`
+        }
         onMouseOver={menuMouseIn}
       >
         {content.category}
@@ -15,7 +21,11 @@ function List({ menuMouseIn, menuMouseOut, content, isHover }) {
         <DropMenu isHover={isHover} onMouseLeave={menuMouseOut}>
           {content.subCategory.map(content => (
             <SubCategory
-              to={`products?type_name=${content.subTitle}`}
+              to={
+                isTokenCheck
+                  ? `products/private?type_name=${content.subTitle}`
+                  : `products/public?type_name=${content.subTitle}`
+              }
               key={content.id}
             >
               {content.subTitle}

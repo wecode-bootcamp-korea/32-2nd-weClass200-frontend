@@ -1,12 +1,11 @@
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MainProducts from "../MainProducts/MainProducts";
 
-function ClassCarousel({ products, type }) {
+function ClassCarousel({ products, type, goToDetail }) {
   function selectSettings(type) {
     switch (type) {
       case "Best":
@@ -22,12 +21,7 @@ function ClassCarousel({ products, type }) {
     }
   }
 
-  const navigate = useNavigate();
   const product = products.products || products.myclasses;
-
-  function goToDetail(id) {
-    navigate(`/products/${id}`);
-  }
 
   return (
     <ClassCarouselSlide>

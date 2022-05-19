@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DropDown from "./DropDown/DropDown";
@@ -15,9 +15,12 @@ function Nav() {
   }
 
   const searchRef = useRef(null);
+  const isTokenCheck = localStorage.getItem("new_token");
 
   const searchProduct = () => {
-    navigate(`/products/public?search=${searchRef.current.value}`);
+    isTokenCheck
+      ? navigate(`/products/private?search=${searchRef.current.value}`)
+      : navigate(`/products/public?search=${searchRef.current.value}`);
   };
 
   return (

@@ -42,8 +42,12 @@ const Product = ({
   const discountPrice =
     priceAmount * parseFloat(`0.${100 - discountRate}`) - discountCoupon;
 
+  const isTokenCheck = localStorage.getItem("new_token");
+
   const goToProductDetail = id => {
-    navigate(`/products/${id}`);
+    isTokenCheck
+      ? navigate(`/products/private/${id}`)
+      : navigate(`/products/public/${id}`);
   };
 
   return (

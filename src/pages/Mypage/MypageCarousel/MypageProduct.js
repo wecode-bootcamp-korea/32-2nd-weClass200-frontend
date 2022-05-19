@@ -15,7 +15,7 @@ const MypageProduct = ({
   type,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [heartAmount, setHeartAmount] = useState(parseInt(likeAmount));
+  const [heartAmount, setHeartAmount] = useState(parseInt(likeAmount) + 5);
   useEffect(() => {
     isLiked
       ? setHeartAmount(prev => prev + 1)
@@ -73,10 +73,10 @@ const MypageProduct = ({
           {discountRate && <DiscountRate>{discountRate}%</DiscountRate>}
           {priceAmount && (
             <InstallmentPrice>
-              {(priceAmount / month).toLocaleString()}원
+              {parseInt(priceAmount / month).toLocaleString()}원
             </InstallmentPrice>
           )}
-          {month && <InstallmentMonth>({month}개월)</InstallmentMonth>}
+          {discountRate && <InstallmentMonth>({month}개월)</InstallmentMonth>}
         </PriceBox>
       </ProductDetailBox>
     </ProductItem>

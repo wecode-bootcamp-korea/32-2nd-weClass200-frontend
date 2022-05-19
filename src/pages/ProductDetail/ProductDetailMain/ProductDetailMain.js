@@ -173,8 +173,17 @@ const ProductDetailMain = ({ detail, getData }) => {
             후기 작성하기
           </ReviewWriteBtn>
           <ReviewRatingBox>
-            <Rating size="large" value={Math.floor(ratingAverage)} readOnly />
-            <RatingAverage>{ratingAverage.toFixed(1)}</RatingAverage>
+            {ratingAmount !== 0 && (
+              <>
+                <Rating
+                  size="large"
+                  value={Math.floor(ratingAverage)}
+                  readOnly
+                />
+
+                <RatingAverage>{ratingAverage.toFixed(1)}</RatingAverage>
+              </>
+            )}
             <ReviewAmount>총 {reviewLength}개</ReviewAmount>
           </ReviewRatingBox>
           <ReviewImgBox>
@@ -248,9 +257,7 @@ const ProductDetailMain = ({ detail, getData }) => {
             })}
           </ReviewBox>
           <ReviewMoreBtn onClick={handleReviewMore}>
-            {isClickedMore
-              ? "후기 접기"
-              : `${reviewLength - 2}개의 후기 더보기`}
+            {isClickedMore ? "후기 접기" : `${reviewLength}개의 후기 전체 보기`}
           </ReviewMoreBtn>
         </ContentBox>
 
@@ -312,11 +319,11 @@ const ThumbCoupon = styled.p`
   color: white;
   background-color: #581fcf;
   border-radius: 2px;
-  visibility: ${props => props.visibility}
+  visibility: ${props => props.visibility};
   font-size: 18px;
   font-weight: 800;
   text-align: center;
-  `;
+`;
 
 const TabMenus = styled.div`
   position: sticky;

@@ -17,8 +17,10 @@ function Router() {
       <Routes>
         <Route path="/kakaoauth" element={<Auth />} />
         <Route path="/" element={<Main />} />
-        <Route path="/products" element={<ProductList />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/products/public" element={<ProductList />} />
+        <Route path="/products/private" element={<ProductList />} />
+        <Route path="/products/public/:id" element={<ProductDetail />} />
+        <Route path="/products/private/:id" element={<ProductDetail />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/payment/:id" element={<Payment />} />

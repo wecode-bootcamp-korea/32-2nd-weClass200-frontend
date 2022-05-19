@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DropDown from "./DropDown/DropDown";
 import ProfileWrapper from "./ProfileWrapper/ProfileWrapper";
@@ -8,10 +8,17 @@ import logoSrc from "./../../assets/images/weclass_logo.png";
 
 function Nav() {
   const [isLogIn, setIsLogIn] = useState(true);
+  const navigate = useNavigate();
 
   function PostUserData() {
     setIsLogIn(prev => !prev);
   }
+
+  const searchRef = useRef(null);
+
+  const searchProduct = () => {
+    navigate(`/products/public?search=${searchRef.current.value}`);
+  };
 
   return (
     <NavFixed>
@@ -19,11 +26,11 @@ function Nav() {
         <Container>
           <Logo src={logoSrc} />
           <Title to="/">클래스</Title>
-          <SearchBar />
+          <SearchBar searchRef={searchRef} searchProduct={searchProduct} />
           <ProfileWrapper PostUserData={PostUserData} isLogIn={isLogIn} />
         </Container>
       </Wrapper>
-      {/* <DropDown /> */}
+      <DropDown />
     </NavFixed>
   );
 }

@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-function SearchBar() {
+function SearchBar({ searchProduct, searchRef }) {
   return (
     <NavWrapper>
-      <InputBox placeholder="찾으시는 취미가 있나요?" />
-      <FontAwsome className="fa-solid fa-magnifying-glass" />
+      <InputBox ref={searchRef} placeholder="찾으시는 취미가 있나요?" />
+      <FontAwsome
+        onClick={searchProduct}
+        className="fa-solid fa-magnifying-glass"
+      />
     </NavWrapper>
   );
 }

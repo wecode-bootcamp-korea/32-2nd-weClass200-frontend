@@ -61,8 +61,6 @@ https://youtu.be/0y917vuJxNg
 
 ![](https://velog.velcdn.com/images/willy4202/post/abffbc63-a30c-42a7-80bd-b2a605fdd825/image.gif)
 
-![](https://velog.velcdn.com/images/willy4202/post/abffbc63-a30c-42a7-80bd-b2a605fdd825/image.gif)
-
 - 상품 리스트
 
 ```

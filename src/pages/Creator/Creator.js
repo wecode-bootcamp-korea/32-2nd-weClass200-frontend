@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
 import styled from "styled-components";
 
 const Creator = () => {
+  const navigate = useNavigate();
   const [creatorUserInfo, setCreatorUserInfo] = useState([
     {
       nickname: "",
@@ -12,7 +14,15 @@ const Creator = () => {
       carrer: "",
     },
   ]);
-  const [classInfo, setClassInfo] = useState([{}]);
+  const [classInfo, setClassInfo] = useState([
+    {
+      name: "",
+      price: "",
+      description: "",
+      period: "",
+      subcategory_name: "",
+    },
+  ]);
 
   const [mainCategory, setMainCategory] = useState();
 
@@ -34,11 +44,10 @@ const Creator = () => {
 
   const mainCategorySelector = e => {
     setMainCategory(e.target.value);
-    setClassInfo([{ ...classInfo[0], category2: e.target.value }]);
   };
 
   const subCategorySelector = e => {
-    setClassInfo([{ ...classInfo[0], category: e.target.value }]);
+    setClassInfo([{ ...classInfo[0], subcategory_name: e.target.value }]);
   };
 
   const showSubCategory = () => {
@@ -110,17 +119,38 @@ const Creator = () => {
 
   const inputValueCheck = e => {
     e.preventDefault();
-    fetch("http://10.58.3.183:8000/users/creator", {
+    fetch("http://10.58.6.184:8000/users/creator", {
       method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("new_token"),
+      },
       body: JSON.stringify({
         nickname: creatorUserInfo[0].nickname,
         email: creatorUserInfo[0].email,
-        img: "a",
         phone_number: creatorUserInfo[0].phone_number,
         introduction: creatorUserInfo[0].introduction,
         carrer: creatorUserInfo[0].carrer,
+        profile_image: "asdf",
       }),
     });
+
+    fetch("http://10.58.6.184:8000/products/createclass", {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("new_token"),
+      },
+      body: JSON.stringify({
+        name: classInfo[0].name,
+        price: classInfo[0].price,
+        description: classInfo[0].description,
+        period: classInfo[0].period,
+        subcategory_name: classInfo[0].subcategory_name,
+        image:
+          "https://github.com/BDjaekwanee/project-imgaes/blob/master/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.png?raw=true",
+      }),
+    });
+    alert("상품이 등록되었습니다.");
+    navigate("/");
   };
 
   return (
@@ -234,7 +264,7 @@ const Wrapper = styled.section`
   justify-content: space-between;
   width: 1200px;
   margin: 0 auto;
-  padding-top: 150px;
+  padding-top: 185px;
   margin-bottom: 150px;
 `;
 
@@ -354,6 +384,13 @@ const ProductSubmitBtn = styled.button`
   justify-content: center;
   padding: 10px;
   margin-bottom: -50px;
+  border: none;
+  background-color: lightgray;
+  color: black;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
 `;
 
 const CREATOR_INFO_INPUT = [
@@ -405,28 +442,28 @@ const CREATOR_PRODUCT_INPUT = [
     dataId: 3,
     paddingTop: "160px",
     placeHolder: "클래스명을 적어주세요",
-    name: "className",
+    name: "name",
   },
   {
     id: 2,
     title: "클래스 간단 소개",
     type: "text",
     placeHolder: "클래스에 대해 소개해주세요",
-    name: "classInfo",
+    name: "description",
   },
   {
     id: 3,
     title: "클래스 가격",
     type: "number",
     placeHolder: "클래스 가격을 적어주세요",
-    name: "classPrice",
+    name: "price",
   },
   {
     id: 4,
     title: "업로드 기간",
     type: "number",
     placeHolder: "업로드 기간을 적어주세요",
-    name: "uploadMonth",
+    name: "period",
   },
 ];
 const TAB_MENU = [

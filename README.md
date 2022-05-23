@@ -109,12 +109,10 @@ https://youtu.be/0y917vuJxNg
 - 카테고리 선택에 따른 맞춤 상품 리스트 데이터 받아오기
 - 찜하기 구현 
 - 페이지네이션 구현
+- 캐러셀 라이브러리 이용해서 구현
 - 상품 정보에 따른 정렬 기능 추가 (인기순, 가격순 등)
 ```
 
-![](https://velog.velcdn.com/images/willy4202/post/5405e789-0469-43e0-bec5-070413180641/image.gif)
-
-![](https://velog.velcdn.com/images/willy4202/post/a484d627-704c-40eb-afc7-7254e4904d5b/image.gif)
 
 
 

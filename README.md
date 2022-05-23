@@ -98,11 +98,25 @@ https://youtu.be/0y917vuJxNg
 
 ![](https://velog.velcdn.com/images/willy4202/post/4886efb3-f068-498e-a480-666930bf2c85/image.gif)
 
-- 크리에이터 센터
+
+
+
+## 내가 맡은 부분
+
+- 상품 리스트
 
 ```
-- 크리에이터 센터에서 직접, 강의를 만들 수 있는 기능 구현
+- 카테고리 선택에 따른 맞춤 상품 리스트 데이터 받아오기
+- 찜하기 구현 
+- 페이지네이션 구현
+- 상품 정보에 따른 정렬 기능 추가 (인기순, 가격순 등)
 ```
+
+![](https://velog.velcdn.com/images/willy4202/post/5405e789-0469-43e0-bec5-070413180641/image.gif)
+
+![](https://velog.velcdn.com/images/willy4202/post/a484d627-704c-40eb-afc7-7254e4904d5b/image.gif)
+
+
 
 ### Reference
 
